@@ -34,6 +34,12 @@ public class BasicControllerIntegrationTest {
 		assertThat(response.getBody(),containsString("Hello World"));
 	}
 	
+	@Test
+	public void welcomeWithParam() {
+		ResponseEntity<String> response=template.getForEntity(createURL("/welcome-with-parameter/name/Nitin"), String.class);
+		assertThat(response.getBody(),containsString("Nitin"));
+	}
+	
 	
 	private String createURL(String uri) {
 		return LOCAL_HOST+port+uri;

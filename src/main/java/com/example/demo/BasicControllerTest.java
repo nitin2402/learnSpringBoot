@@ -43,4 +43,16 @@ public class BasicControllerTest {
 			e.printStackTrace();
 		}
 	}
+	
+	@Test
+	public void welcomeWithParam() {
+		try {
+			mvc.perform(MockMvcRequestBuilders.get("/welcome-with-parameter/name/Nitin").accept(MediaType.APPLICATION_JSON)).
+			//andExpect(status().isOk()).andExpect(content().string(equalTo("Hello World")));
+			andExpect(status().isOk()).andExpect(content().string(containsString("Nitin")));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 }
